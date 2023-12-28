@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: app_db
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ='Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - /var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/db/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: app_nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./src:/var/www/app
+      - ./docker/nginx/default.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: app_backend
+    volumes:
+      - ./src:/var/www/app
+      - /root/.composer/cache
+      - /root/.npm
+    depends_on:
+      - db
+      - minio
+
+  minio:
+    image: minio/minio
+    container_name: app_minio
+    ports:
+      - '9001:9000'
+    environment:
+      MINIO_ACCESS_KEY: access_key
+      MINIO_SECRET_KEY: secret_key
+    command: server /export
+
+  create-bucket:
+    container_name: assisty_create-bucket
+    image: minio/mc
+    entrypoint: ['']
+    command:
+      - /bin/sh
+      - -c
+      - |
+        until (mc config host add minio http://minio:9000 access_key secret_key) do echo 'wait until add host' && sleep 1; done;
+        mc mb minio/test
+        mc policy set public minio/test
+    environment:
+      MINIO_ACCESS_KEY: access_key
+      MINIO_SECRET_KEY: secret_key
+    depends_on:
+      - minio
