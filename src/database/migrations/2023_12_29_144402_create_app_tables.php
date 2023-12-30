@@ -13,9 +13,26 @@ class CreateAppTables extends Migration
      */
     public function up()
     {
-        Schema::create('app_tables', function (Blueprint $table) {
+        Schema::create('visit_statuses', function (Blueprint $table) {
             $table->id();
+            // ここにカラムを追加していく
             $table->timestamps();
+        });
+
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            // ここにカラムを追加していく
+            $table->timestamps();
+        });
+
+        Schema::create('logs', function (Blueprint $table) {
+            $table->id();
+            // ここにカラムを追加していく
+            $table->timestamps();
+
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('visit_status_id')->constrained('visit_statuses')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -26,6 +43,8 @@ class CreateAppTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('app_tables');
+        Schema::dropIfExists('visit_statuses');
+        Schema::dropIfExists('categories');
+        Schema::dropIfExists('logs');
     }
 }
