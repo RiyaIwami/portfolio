@@ -18,17 +18,23 @@
                         <div class="form-group">
                             <label for="name">ユーザーネーム</label>
 
+                            <div style="margin-bottom: 5px;"></div>
+
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                             @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                             @enderror
                         </div>
 
+                        <div style="margin-bottom: 20px;"></div>
 
                         <div class="form-group">
                             <label for="email">メールアドレス</label>
+
+                            <div style="margin-bottom: 5px;"></div>
+
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -37,9 +43,13 @@
                             @enderror
                         </div>
 
+                        <div style="margin-bottom: 20px;"></div>
 
                         <div class="form-group">
                             <label for="password">パスワード</label>
+
+                            <div style="margin-bottom: 5px;"></div>
+
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -48,11 +58,17 @@
                             @enderror
                         </div>
 
+                        <div style="margin-bottom: 20px;"></div>
+
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" type="button">
-                                登録
-                            </button>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-block btn-secondary">
+                                    登録
+                                </button>
+                            </div>
                         </div>
+
+                        <div style="margin-bottom: 5px;"></div>
 
                         <div>
                             アカウントをお持ちの方は<a href="{{ route('login') }}">こちら</a>
