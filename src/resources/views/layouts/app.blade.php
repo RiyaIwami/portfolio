@@ -7,7 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'mogurogu') }}</title>
+
+<title>@yield('title') | {{ config('app.name', 'Laravel') }}</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
     <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
 
