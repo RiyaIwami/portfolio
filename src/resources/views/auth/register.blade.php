@@ -62,7 +62,7 @@
 
                         <div class="form-group">
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-block btn-secondary">
+                                <button type="submit" class="btn btn-block">
                                     登録
                                 </button>
                             </div>

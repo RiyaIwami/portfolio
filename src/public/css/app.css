@@ -12,6 +12,15 @@
   color: #EFE9D8 !important;
 }
 
+.label {
+  color: #ab8d71 !important;
+}
+
+.btn {
+  background-color: #ab8d71 !important;
+  color: #EFE9D8 !important;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
