@@ -9,7 +9,7 @@
     <div class="row justify-content-center">
         <div class="card" style="width: 500px">
             <div class="card-body">
-                <div class="font-weight-bold text-center border-bottom pb-3" style="font-size: 24px">新規登録</div>
+                <div class="font-weight-bold text-center" style="font-size: 24px">新規登録</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

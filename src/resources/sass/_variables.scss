@@ -1,8 +1,21 @@
 // Body
-$body-bg: #efe9d8;
+$body-bg: #EFE9D8;
+$header-brown: #ab8d71;
+$text-beige: #EFE9D8;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$secondary: #AB8D71;
+
+.navbar{
+    background-color: #ab8d71;
+}
+
+.navbar-brand{
+    color: #EFE9D8 !important;
+}
+
+.nav-link{
+    color: #EFE9D8 !important;
+}
