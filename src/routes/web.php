@@ -19,8 +19,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['reset' => true]);
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
