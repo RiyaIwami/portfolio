@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\MyPage\ProfileController;
+use App\Http\Requests\EditRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']], function () {
-    Route::get('edit-profile', [ProfileController::class, 'showProfileEditFrom'])->name('edit-profile');
+    Route::get('edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile');
+    Route::post('edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
 });
-
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
 
