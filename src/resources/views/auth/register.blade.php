@@ -10,7 +10,7 @@
                 <div class="font-weight-bold text-center" style="font-size: 24px">新規登録</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="p-5">
                         @csrf
 
                         <div class="form-group">
