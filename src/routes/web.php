@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
+use App\Http\Controllers\MyPage\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,14 @@ use Illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']], function () {
+    Route::get('edit-profile', [ProfileController::class, 'showProfileEditFrom'])->name('edit-profile');
+});
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
+
 
 Auth::routes(['reset' => true]);
 
