@@ -30,7 +30,7 @@
                     <!-- ユーザーがログインしている場合のドロップダウンメニュー -->
                     <li class="nav-item dropdown ml-2"">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            <i class="fa-solid fa-burger"></i>
+                            <i class="fa-solid fa-utensils"></i>
                             {{ Auth::user()->name }}
                         </a>
 

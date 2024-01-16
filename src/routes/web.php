@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\MyPage\ProfileController;
 use App\Http\Requests\EditRequest;
+use App\Http\Controllers\LogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,21 +22,21 @@ use App\Http\Requests\EditRequest;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'logs', 'middleware' => ['auth']],function(){
+    Route::get('/', [LogsController::class, 'showLogs'])->name('top');
+});
+
+Route::group(['prefix' => 'logs', 'as' => 'logs', 'middleware' => ['auth']],function(){
 });
 
 Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']], function () {
-    Route::get('edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile');
-    Route::post('edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
+    Route::get('/edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile');
+    Route::post('/edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
-
 
 Auth::routes(['reset' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
