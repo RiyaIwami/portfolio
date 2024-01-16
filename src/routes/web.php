@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\MyPage\ProfileController;
 use App\Http\Requests\EditRequest;
 use App\Http\Controllers\LogsController;
+use App\Http\Controllers\AddController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,13 @@ Route::group(['prefix' => 'logs', 'middleware' => ['auth']],function(){
     Route::get('/', [LogsController::class, 'showLogs'])->name('top');
 });
 
-Route::group(['prefix' => 'logs', 'as' => 'logs', 'middleware' => ['auth']],function(){
+// Route::group(['prefix' => 'logs', 'as' => 'logs', 'middleware' => ['auth']],function(){
+
+// });
+
+Route::group(['prefix' => 'add', 'middleware' => ['auth']],
+function(){
+    Route::get('/', [AddController::class, 'showAddForm'])->name('add');
 });
 
 Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']], function () {
