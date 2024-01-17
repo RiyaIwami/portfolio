@@ -20,7 +20,7 @@ class CreateLogsTable extends Migration
             $table->string('location');
             $table->unsignedBigInteger('category');
             $table->unsignedBigInteger('visit_status');
-            $table->decimal('score', 2, 1);
+            $table->decimal('score');
             $table->text('impression');
             // $table->画像　空欄〇
             $table->timestamps();

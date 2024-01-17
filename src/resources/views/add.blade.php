@@ -18,8 +18,11 @@
                 @csrf
 
                 {{-- 店名 --}}
-                <div class="form-group"> {{-- ここで "form-group" を修正 --}}
+                <div class="form-group">
                     <label for="location">店名</label>
+
+                    <div style="margin-bottom: 5px;"></div>
+
                     <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location" autofocus>
                     @error('location')
                         <span class="invalid-feedback" role="alert">
@@ -28,9 +31,14 @@
                     @enderror
                 </div>
 
+                <div style="margin-bottom: 20px;"></div>
+
                 {{-- カテゴリ --}}
-                <div class="form-group"> {{-- ここで "form-group" を修正 --}}
+                <div class="form-group">
                     <label for="category">カテゴリ</label>
+
+                    <div style="margin-bottom: 5px;"></div>
+
                     <select name="category" class="custom-select form-control @error('category') is-invalid @enderror">
                         {{-- 次のパートで実装します --}}
                     </select>
@@ -41,10 +49,12 @@
                     @enderror
                 </div>
 
+                <div style="margin-bottom: 20px;"></div>
+
                 {{-- 訪問状況 --}}
                 <div class="form-group">
                     <label for="visit_status">訪問状況</label>
-                    <br>
+                    <div style="margin-bottom: 5px;"></div>
                     <div class="form-check-inline">
                         <input class="form-check-input" type="radio" name="visit_status" id="visit_status1">
                         <label class="form-check-label" for="visit_status1">
@@ -58,20 +68,28 @@
                         </label>
                     </div>
                 </div>
-                <div class="cont">
-                    <div class="stars">
-                        <form action="">
-                            <input class="star star-5" id="star-5" type="radio" name="star"/>
-                            <label class="star star-5" for="star-5"></label>
-                            <input class="star star-4" id="star-4" type="radio" name="star"/>
-                            <label class="star star-4" for="star-4"></label>
-                            <input class="star star-3" id="star-3" type="radio" name="star"/>
-                            <label class="star star-3" for="star-3"></label>
-                            <input class="star star-2" id="star-2" type="radio" name="star"/>
-                            <label class="star star-2" for="star-2"></label>
-                            <input class="star star-1" id="star-1" type="radio" name="star"/>
-                            <label class="star star-1" for="star-1"></label>
-                        </form>
+
+                <div style="margin-bottom: 20px;"></div>
+
+                {{-- 点数 --}}
+                <div class="form-group">
+                    <label for="score">点数</label>
+                        <div class="cont">
+                            <div class="stars">
+                                <form action="">
+                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                    <label class="star star-5" for="star-5"></label>
+                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                    <label class="star star-4" for="star-4"></label>
+                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                    <label class="star star-3" for="star-3"></label>
+                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                    <label class="star star-2" for="star-2"></label>
+                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                    <label class="star star-1" for="star-1"></label>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
