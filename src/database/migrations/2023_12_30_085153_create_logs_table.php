@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->id();
             // ここにカラムを追加していく
 
-            $table->string('name');
+            $table->string('location');
             $table->unsignedBigInteger('category');
             $table->unsignedBigInteger('visit_status');
             $table->decimal('score', 2, 1);
