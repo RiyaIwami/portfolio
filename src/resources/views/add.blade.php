@@ -35,7 +35,11 @@
                         <label for="category">カテゴリ</label>
                         <div style="margin-bottom: 5px;"></div>
                         <select name="category" class="custom-select form-control @error('category') is-invalid @enderror">
-                            {{-- 次のパートで実装します --}}
+                            @foreach ($categories as $categories)
+                                <option value="{{$categories->id}}" {{old('categories') == $categories->id ? 'selected' : ''}}>
+                                    {{$categories->name}}
+                                </option>
+                            @endforeach
                         </select>
                         @error('category')
                             <span class="invalid-feedback" role="alert">
