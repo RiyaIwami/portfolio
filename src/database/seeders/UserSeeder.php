@@ -14,7 +14,6 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
-
         // Use the UserFactory to create a new User instance
         User::factory()->create([
             'name' => 'もぐもぐ子',

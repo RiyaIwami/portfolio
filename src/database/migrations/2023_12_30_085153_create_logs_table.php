@@ -15,13 +15,12 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            // ここにカラムを追加していく
-
-            $table->string('location');
-            $table->unsignedBigInteger('category');
-            $table->unsignedBigInteger('visit_status');
-            $table->decimal('score');
-            $table->text('impression');
+            $table->unsignedBigInteger('user_id');
+            // $table->string('location');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('visit_status_id');
+            // $table->('score');
+            // $table->text('impression');
             // $table->画像　空欄〇
             $table->timestamps();
 
