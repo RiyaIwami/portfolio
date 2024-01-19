@@ -18,10 +18,10 @@
 
                     {{-- 店名 --}}
                     <div class="form-group">
-                        <label for="location">店名</label>
+                        <label for="name">店名</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location" autofocus>
-                        @error('location')
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -34,10 +34,10 @@
                     <div class="form-group">
                         <label for="category">カテゴリ</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <select name="category" class="custom-select form-control @error('category') is-invalid @enderror">
-                            @foreach ($categories as $categories)
-                                <option value="{{$categories->id}}" {{old('categories') == $categories->id ? 'selected' : ''}}>
-                                    {{$categories->name}}
+                        <select id="category" name="category" class="custom-select form-control @error('category') is-invalid @enderror">
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -93,9 +93,9 @@
 
                     {{-- 感想 --}}
                     <div class="form-group">
-                        <label for="impression">感想</label>
+                        <label for="review">感想</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <input id="impression" type="text" class="form-control">
+                        <input id="review" type="text" class="form-control">
                     </div>
 
                     <div style="margin-bottom: 20px;"></div>
