@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\MyPage\ProfileController;
 use App\Http\Requests\EditRequest;
-use App\Http\Controllers\LogController;
+use App\Http\Controllers\LogsController;
 use App\Http\Controllers\AddController;
 
 /*
@@ -24,7 +24,7 @@ use App\Http\Controllers\AddController;
 */
 
 Route::group(['prefix' => 'logs', 'middleware' => ['auth']],function(){
-    Route::get('/', [LogController::class, 'showLogs'])->name('top');
+    Route::get('/', [LogsController::class, 'showLogs'])->name('top');
 });
 
 Route::group(['prefix' => 'add', 'middleware' => ['auth']],

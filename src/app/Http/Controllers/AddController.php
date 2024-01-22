@@ -38,16 +38,12 @@ class AddController extends Controller
      */
     public function addLog(AddRequest $request)
     {
-        // ログを追加するユーザーを取得
         $user = Auth::user();
 
-        // 商品画像を保存し、ファイル名を取得
         $imageName = $this->saveImage($request->file('item-image'));
 
-        // 新しいログインスタンスを作成
         $log = new Log();
 
-        // ログの各プロパティを設定
         $log->user_id = $user->id;
         $log->name = $request->input('name');
         $log->category_id = $request->input('category');
@@ -56,10 +52,8 @@ class AddController extends Controller
         $log->review = $request->input('review');
         $log->image_file_name = $imageName;
 
-        // ログを保存
         $log->save();
 
-        // ユーザーを元のページにリダイレクトし、成功メッセージを表示
         return redirect()->back()
             ->with('status', 'ログを登録しました！');
     }
@@ -68,24 +62,19 @@ class AddController extends Controller
      * 商品画像をリサイズして保存します。
      *
      * @param UploadedFile $file アップロードされた商品画像
-     * 
+     *
      * @return string ファイル名
      */
     private function saveImage(UploadedFile $file): string
     {
-        // 一時的なファイルのパスを生成
         $tempPath = $this->makeTempPath();
 
-        // 商品画像をリサイズして保存
         Image::make($file)->fit(300, 300)->save($tempPath);
 
-        // 保存したファイルのパスを取得
         $filePath = Storage::disk('public')->put('item-images', new File($tempPath));
 
-        // 保存したファイルの名前を取得
         $imageName = basename($filePath);
 
-        // 保存したファイルの名前を返す
         return $imageName;
     }
 
