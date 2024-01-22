@@ -76,3 +76,19 @@ services:
       MINIO_SECRET_KEY: secret_key
     depends_on:
       - minio
+      
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: app_phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_HOST=db
+      - TZ='Asia/Tokyo'
+      - LANG=ja_JP.UTF-8  # PHPMyAdminの言語を日本語に設定
+    ports:
+      - 8080:80
+    depends_on:
+      - db

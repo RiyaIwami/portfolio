@@ -6,11 +6,14 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
+
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
+
+                <div style="margin-bottom: 5px;"></div>
                 <div class="font-weight-bold text-center" style="font-size: 24px">ログ登録</div>
 
                 <form method="POST" action="{{ route('add') }}" class="p-5" enctype="multipart/form-data">
@@ -30,7 +33,7 @@
 
                     <div style="margin-bottom: 20px;"></div>
 
-                    {{-- カテゴリ --}}
+                    {{-- カテゴリ　--}}
                     <div class="form-group">
                         <label for="category">カテゴリ</label>
                         <div style="margin-bottom: 5px;"></div>

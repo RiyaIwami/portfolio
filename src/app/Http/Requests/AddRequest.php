@@ -28,7 +28,8 @@ class AddRequest extends FormRequest
             'category' => ['required', 'integer'],
             'visit_status' => ['required', 'integer'],
             'score_id' => ['required', 'integer'],
-            'review' => ['required', 'text'],
+            'review' => ['required', 'string', 'max:255'],
+            'image'  => ['required', 'file', 'image'],
         ];
     }
 
@@ -40,6 +41,7 @@ class AddRequest extends FormRequest
             'visit_status' => '訪問状況',
             'score_id' => '点数',
             'review' => '感想',
+            'image'  => '画像',
         ];
     }
 }
