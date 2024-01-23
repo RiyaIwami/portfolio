@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Logs;
+use App\Models\Log;
 
 class LogsController extends Controller
 {
-    public function showLogs() {
+    public function showLogs(Request $request) {
         return view('logs.logs');
     }
 }

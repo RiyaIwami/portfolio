@@ -36,6 +36,7 @@
 
                         <!-- ドロップダウンメニュー -->
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <!-- ログ登録リンク -->
                             <a class="dropdown-item" href="{{ route('add') }}" >
                                 <i class="fa-regular fa-pen-to-square" style="width: 30px"></i>ログ登録
                             </a>

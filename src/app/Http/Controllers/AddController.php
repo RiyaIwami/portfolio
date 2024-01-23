@@ -18,9 +18,9 @@ class AddController extends Controller
 {
     /**
      * ログ追加フォームを表示します。
-     *
-     * @return \Illuminate\View\View
-     */
+ *
+ * @return \Illuminate\View\View
+ */
     public function showAddForm()
     {
         $categories = Category::orderBy('sort_no')->get();
@@ -38,12 +38,14 @@ class AddController extends Controller
      */
     public function addLog(AddRequest $request)
     {
+        // ログを追加する際にユーザー情報を取得
         $user = Auth::user();
 
+        // 商品画像の保存処理を行い、保存されたファイル名を取得
         $imageName = $this->saveImage($request->file('item-image'));
 
+        // 新しいログモデルを作成し、リクエストから取得したデータを設定
         $log = new Log();
-
         $log->user_id = $user->id;
         $log->name = $request->input('name');
         $log->category_id = $request->input('category');
@@ -52,43 +54,11 @@ class AddController extends Controller
         $log->review = $request->input('review');
         $log->image_file_name = $imageName;
 
+        // ログを保存
         $log->save();
 
-        return redirect()->back()
-            ->with('status', 'ログを登録しました！');
+         // ログが登録されたら元のページにリダイレクトして成功メッセージを表示
+        return redirect()->back()->with('status', 'ログを登録しました！');
     }
 
-    /**
-     * 商品画像をリサイズして保存します。
-     *
-     * @param UploadedFile $file アップロードされた商品画像
-     *
-     * @return string ファイル名
-     */
-    private function saveImage(UploadedFile $file): string
-    {
-        $tempPath = $this->makeTempPath();
-
-        Image::make($file)->fit(300, 300)->save($tempPath);
-
-        $filePath = Storage::disk('public')->put('item-images', new File($tempPath));
-
-        $imageName = basename($filePath);
-
-        return $imageName;
-    }
-
-    /**
-     * 一時的なファイルを生成してパスを返します。
-     *
-     * @return string ファイルパス
-     */
-    private function makeTempPath(): string
-    {
-        // 一時的なファイルを生成し、そのパスを返す
-        $tmpFile = tmpfile();
-        $meta = stream_get_meta_data($tmpFile);
-        return $meta["uri"];
-    }
 }
-

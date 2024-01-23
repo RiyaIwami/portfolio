@@ -17,10 +17,10 @@ RUN apk --update --no-cache add \
     oniguruma-dev \
     nodejs \
     npm \
-    patch && \
-    rm -rf /var/cache/apk/* && \
-    # Install PHP Extension
-    docker-php-ext-install \
+    patch \
+    linux-headers
+
+RUN docker-php-ext-install \
     pdo_mysql \
     bcmath \
     mbstring \
@@ -29,4 +29,9 @@ RUN apk --update --no-cache add \
     gd \
     intl
 
+# Install the latest version of xdebug
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
 WORKDIR /var/www/app
+
