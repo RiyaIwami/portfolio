@@ -29,19 +29,24 @@ class AddRequest extends FormRequest
             'visit_status' => ['required', 'integer'],
             'score_id' => ['required', 'integer'],
             'review' => ['required', 'string', 'max:255'],
-            'image'  => ['required', 'file', 'image'],
+            // 'image'  => ['required', 'file', 'image'],
         ];
     }
 
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
     public function attributes()
     {
         return [
-            'name'=> '店名',
+            'name' => '店名',
             'category' => 'カテゴリ',
             'visit_status' => '訪問状況',
             'score_id' => '点数',
             'review' => '感想',
-            'image'  => '画像',
+            // 'image'  => '画像',
         ];
     }
 }

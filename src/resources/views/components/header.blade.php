@@ -37,11 +37,11 @@
                         <!-- ドロップダウンメニュー -->
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- ログ登録リンク -->
-                            <a class="dropdown-item" href="{{ route('add') }}" >
+                            <a class="dropdown-item" href="{{ route('add.form') }}" >
                                 <i class="fa-regular fa-pen-to-square" style="width: 30px"></i>ログ登録
                             </a>
                             <!-- プロフィール編集リンク -->
-                            <a class="dropdown-item" href="{{ route('mypage.edit-profile') }}" >
+                            <a class="dropdown-item" href="{{ route('mypage.edit-profile.form') }}" >
                                 <i class="fa-solid fa-address-card" style="width: 30px"></i>プロフィール編集
                             </a>
                             <!-- ログアウトリンク -->

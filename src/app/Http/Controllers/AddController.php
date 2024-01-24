@@ -36,28 +36,31 @@ class AddController extends Controller
      * @param AddRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addLog(AddRequest $request)
+    public function addLog(Request $request)
     {
+
         // ログを追加する際にユーザー情報を取得
         $user = Auth::user();
+    
 
         // 商品画像の保存処理を行い、保存されたファイル名を取得
-        $imageName = $this->saveImage($request->file('item-image'));
+        // $imageName = $this->saveImage($request->file('item-image'));
 
         // 新しいログモデルを作成し、リクエストから取得したデータを設定
         $log = new Log();
         $log->user_id = $user->id;
         $log->name = $request->input('name');
         $log->category_id = $request->input('category');
-        $log->visit_status_id = $request->input('visit_status');
-        $log->score_id = $request->input('score');
+        $log->visit_status_id = is_numeric($request->input('visit_status')) ? $request->input('visit_status') : 0;
+        $log->score_id = is_numeric($request->input('score')) ? $request->input('score') : 0;
         $log->review = $request->input('review');
-        $log->image_file_name = $imageName;
+        $log->review = $request->input('review');
+        // $log->image_file_name = $imageName;
 
         // ログを保存
         $log->save();
 
-         // ログが登録されたら元のページにリダイレクトして成功メッセージを表示
+         // ログが登録されたら元のページにリダイレクトして成功メッセージを表示 
         return redirect()->back()->with('status', 'ログを登録しました！');
     }
 

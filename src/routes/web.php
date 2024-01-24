@@ -11,6 +11,8 @@ use App\Http\Controllers\MyPage\ProfileController;
 use App\Http\Requests\EditRequest;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\AddController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +31,12 @@ Route::group(['prefix' => 'logs', 'middleware' => ['auth']],function(){
 
 Route::group(['prefix' => 'add', 'middleware' => ['auth']],
 function(){
-    Route::get('/', [AddController::class, 'showAddForm'])->name('add');
+    Route::get('/', [AddController::class, 'showAddForm'])->name('add.form');
     Route::post('/',[AddController::class, 'addLog'])->name('add');
 });
 
 Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']], function () {
-    Route::get('/edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile');
+    Route::get('/edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile.form');
     Route::post('/edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
 });
 
@@ -42,48 +44,24 @@ Auth::routes(['reset' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::get('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-})->middleware('guest')->name('password.request');
-Route::post('/forgot-password', function (Request $request) {
-    $request->validate(['email' => 'required|email']);
+Route::get('/forgot-password', [ResetPasswordController::class, 'showForgotPasswordForm'])
+    ->middleware('guest')
+    ->name('password.request');
 
-    $status = Password::sendResetLink(
-        $request->only('email')
-    );
+Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
 
-    return $status === Password::RESET_LINK_SENT
-                ? back()->with(['status' => __($status)])
-                : back()->withErrors(['email' => __($status)]);
-})->middleware('guest')->name('password.email');
-Route::get('/reset-password/{token}', function ($token) {
-    return view('auth.reset-password', ['token' => $token]);
-})->middleware('guest')->name('password.reset');
-Route::post('/reset-password', function (Request $request) {
-    $request->validate([
-        'token' => 'required',
-        'email' => 'required|email',
-        'password' => 'required|min:8|confirmed',
-    ]);
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->middleware('guest')
+    ->name('password.reset');
 
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function ($user, $password) {
-            $user->forceFill([
-                'password' => Hash::make($password)
-            ])->setRememberToken(Str::random(60));
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
+    ->middleware('guest')
+    ->name('password.update');
 
-            $user->save();
-
-            event(new PasswordReset($user));
-        }
-    );
-
-    return $status === Password::PASSWORD_RESET
-                ? redirect()->route('login')->with('status', __($status))
-                : back()->withErrors(['email' => [__($status)]]);
-})->middleware('guest')->name('password.update');
+Route::get('/edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile.form');

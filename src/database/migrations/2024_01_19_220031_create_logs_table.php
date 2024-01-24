@@ -20,8 +20,8 @@ class CreateLogsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('visit_status_id');
             $table->unsignedBigInteger('score_id');
-            $table->text('review');
-            $table->string('image_file_name');
+            $table->text('review')->nullable();
+            // $table->string('image_file_name');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

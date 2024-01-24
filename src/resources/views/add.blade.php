@@ -104,7 +104,7 @@
                     <div style="margin-bottom: 20px;"></div>
 
                     {{-- 画像 --}}
-                    <div>画像</div>
+                    {{-- <div>画像</div>
                     <span class="item-image-form image-picker">
                         <input type="file" name="item-image" class="d-none" accept="image/png,image/jpeg,image/gif" id="item-image" />
                         <label for="item-image" class="d-inline-block" role="button">
@@ -117,7 +117,7 @@
                         </div>
                     @enderror
 
-                    <div style="margin-bottom: 20px;"></div>
+                    <div style="margin-bottom: 20px;"></div> --}}
 
                     <div class="form-group">
                         <div class="d-grid gap-2">
