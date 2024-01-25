@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisitStatusesTable extends Migration
+class CreateScoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateVisitStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('visit_statuses', function (Blueprint $table) {
+        Schema::create('scores', function (Blueprint $table) {
             $table->id();
+            $table->integer('score');
             $table->timestamps();
         });
     }
@@ -26,7 +27,6 @@ class CreateVisitStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visit_statuses');
+        Schema::dropIfExists('scores');
     }
 }
-

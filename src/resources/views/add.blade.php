@@ -57,20 +57,22 @@
                     <div class="form-group">
                         <label for="visit_status">訪問状況</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="visit_status" id="visit_status1">
+                    
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="visit_status" value="1" id="visit_status1">
                             <label class="form-check-label" for="visit_status1">
                                 訪問済み
                             </label>
                         </div>
+                    
                         <div class="form-check-inline">
-                            <input class="form-check-input" type="radio" name="visit_status" id="visit_status2" checked>
+                            <input class="form-check-input" type="radio" name="visit_status" value="2" id="visit_status2" checked>
                             <label class="form-check-label" for="visit_status2">
                                 未訪問
                             </label>
                         </div>
                     </div>
-
+                    
                     <div style="margin-bottom: 20px;"></div>
 
                     {{-- 点数 --}}
@@ -78,19 +80,20 @@
                         <label for="score">点数</label>
                         <div class="cont">
                             <div class="stars">
-                                    <input class="star star-5" id="star-5" type="radio" name="star"/>
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star"/>
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star"/>
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star"/>
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star"/>
-                                    <label class="star star-1" for="star-1"></label>
+                                <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                                <label class="star star-1" for="star-1"></label>
                             </div>
                         </div>
                     </div>
+                    
 
                     <div style="margin-bottom: 20px;"></div>
 
@@ -104,20 +107,25 @@
                     <div style="margin-bottom: 20px;"></div>
 
                     {{-- 画像 --}}
-                    {{-- <div>画像</div>
-                    <span class="item-image-form image-picker">
-                        <input type="file" name="item-image" class="d-none" accept="image/png,image/jpeg,image/gif" id="item-image" />
-                        <label for="item-image" class="d-inline-block" role="button">
-                            <img src="/images/item-image-default.png" style="object-fit: cover; width: 200px; height: 200px;">
-                        </label>
-                    </span>
-                    @error('item-image')
-                        <div style="color: #E4342E;" role="alert">
-                            <strong>{{ $message }}</strong>
+                    <div class="form-group">
+                        <label for="images">画像 (最大5枚)</label>
+                        <div style="margin-bottom: 5px;"></div>
+                        <div class="d-flex">
+                            <input id="images1" type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" accept="image/*" multiple>
+                            <input id="images2" type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" accept="image/*" multiple>
+                            <input id="images3" type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" accept="image/*" multiple>
+                            <input id="images4" type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" accept="image/*" multiple>
+                            <input id="images5" type="file" class="form-control @error('images') is-invalid @enderror" name="images[]" accept="image/*" multiple>
                         </div>
-                    @enderror
+                        @error('images')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    
 
-                    <div style="margin-bottom: 20px;"></div> --}}
+                    <div style="margin-bottom: 20px;"></div>
 
                     <div class="form-group">
                         <div class="d-grid gap-2">

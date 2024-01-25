@@ -42,26 +42,20 @@ class AddController extends Controller
         // ログを追加する際にユーザー情報を取得
         $user = Auth::user();
     
-
-        // 商品画像の保存処理を行い、保存されたファイル名を取得
-        // $imageName = $this->saveImage($request->file('item-image'));
-
-        // 新しいログモデルを作成し、リクエストから取得したデータを設定
         $log = new Log();
         $log->user_id = $user->id;
         $log->name = $request->input('name');
         $log->category_id = $request->input('category');
-        $log->visit_status_id = is_numeric($request->input('visit_status')) ? $request->input('visit_status') : 0;
-        $log->score_id = is_numeric($request->input('score')) ? $request->input('score') : 0;
+        $visit_status= $request->visit_status;
         $log->review = $request->input('review');
-        $log->review = $request->input('review');
-        // $log->image_file_name = $imageName;
-
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            $log->image_path = str_replace('public/', '', $imagePath);
+        }
         // ログを保存
         $log->save();
 
          // ログが登録されたら元のページにリダイレクトして成功メッセージを表示 
         return redirect()->back()->with('status', 'ログを登録しました！');
     }
-
 }
