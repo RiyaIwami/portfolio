@@ -15,7 +15,8 @@ class CreateVisitStatusesTable extends Migration
     {
         Schema::create('visit_statuses', function (Blueprint $table) {
             $table->id();
-            $table->enum('visit_status', ['訪問済み', '未訪問']);
+            $table->string('name');
+            $table->integer('sort_no');
             $table->timestamps();
         });
     }

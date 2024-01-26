@@ -24,10 +24,10 @@ class AddController extends Controller
     public function showAddForm()
     {
         $categories = Category::orderBy('sort_no')->get();
-        $visitStatuses = VisitStatus::orderBy('id')->get();
-        $scores = Score::orderBy('id')->get();
+        $scores = Score::orderBy('sort_no')->get();
+        $visitStatuses =VisitStatus::all();
 
-        return view('add', ['categories' => $categories, 'visitStatuses' => $visitStatuses, 'scores' => $scores]);
+    return view('add', compact('categories', 'visitStatuses', 'scores'));
     }
 
     /**
@@ -41,21 +41,27 @@ class AddController extends Controller
 
         // ログを追加する際にユーザー情報を取得
         $user = Auth::user();
-    
+
         $log = new Log();
+
+        // ログの各フィールドに値をセット
         $log->user_id = $user->id;
         $log->name = $request->input('name');
         $log->category_id = $request->input('category');
-        $visit_status= $request->visit_status;
+        $log->visit_status_id = $request->input('visit_status');
+        $log->score_id = $request->input('score');
         $log->review = $request->input('review');
+    
+        // 画像の処理
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
-            $log->image_path = str_replace('public/', '', $imagePath);
+            $log->image_paths = json_encode([$imagePath]);
         }
+    
         // ログを保存
         $log->save();
-
-         // ログが登録されたら元のページにリダイレクトして成功メッセージを表示 
+    
+        // ログが登録されたら元のページにリダイレクトして成功メッセージを表示
         return redirect()->back()->with('status', 'ログを登録しました！');
     }
 }

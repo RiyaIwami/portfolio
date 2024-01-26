@@ -23,13 +23,14 @@ class CreateLogsTable extends Migration
             $table->text('review')->nullable();
             $table->json('image_paths')->nullable();
             $table->timestamps();
-
+    
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('visit_status_id')->references('id')->on('visit_statuses');
             $table->foreign('score_id')->references('id')->on('scores');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
+    
 
     /**
      * Reverse the migrations.

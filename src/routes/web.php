@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\MyPage\ProfileController;
 use App\Http\Requests\EditRequest;
+use App\Http\Requests\AddRequest;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\Auth\VerificationController;
