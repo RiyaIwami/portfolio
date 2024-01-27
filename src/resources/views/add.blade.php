@@ -7,11 +7,12 @@
         <div class="row justify-content-center">
             <div class="col-8">
 
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
+                @if(session('status'))
+                    <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                 @endif
+
 
                 <div style="margin-bottom: 5px;"></div>
                 <div class="font-weight-bold text-center" style="font-size: 24px">ログ登録</div>
@@ -70,21 +71,16 @@
                     
                     <div style="margin-bottom: 20px;"></div>
 
+                    
                     {{-- 点数 --}}
-                    <div class="form-group">    
+                    <div class="form-group">
                         <label for="score">点数</label>
                         <div class="cont">
                             <div class="stars">
-                                <input class="star star-5" id="star-5" type="radio" name="score_id" value="5"/>
-                                <label class="star star-5" for="star-5"></label>
-                                <input class="star star-4" id="star-4" type="radio" name="score_id" value="4"/>
-                                <label class="star star-4" for="star-4"></label>
-                                <input class="star star-3" id="star-3" type="radio" name="score_id" value="3"/>
-                                <label class="star star-3" for="star-3"></label>
-                                <input class="star star-2" id="star-2" type="radio" name="score_id" value="2"/>
-                                <label class="star star-2" for="star-2"></label>
-                                <input class="star star-1" id="star-1" type="radio" name="score_id" value="1"/>
-                                <label class="star star-1" for="star-1"></label>
+                                @for($i = 5; $i >= 1; $i--)
+                                    <input class="star star-{{ $i }}" id="star-{{ $i }}" type="radio" name="score_id" value="{{ $i }}"/>
+                                    <label class="star star-{{ $i }}" for="star-{{ $i }}"></label>
+                                @endfor
                             </div>
                         </div>
                     </div>
