@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Category;
 use App\Models\VisitStatus;
 use App\Models\Score;
+use Facade\Ignition\Middleware\AddLogs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -33,7 +34,7 @@ class AddController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function addLog(Request $request)
+    public function addLog(AddRequest $request)
     {
         $user = Auth::user();
 

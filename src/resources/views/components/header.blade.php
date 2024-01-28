@@ -36,6 +36,10 @@
 
                         <!-- ドロップダウンメニュー -->
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <!-- トップリンク -->
+                            <a class="dropdown-item" href="{{ route('top') }}" >
+                                <i class="fa-solid fa-house" style="width: 30px"></i>トップ
+                            </a>
                             <!-- ログ登録リンク -->
                             <a class="dropdown-item" href="{{ route('add.form') }}" >
                                 <i class="fa-regular fa-pen-to-square" style="width: 30px"></i>ログ登録

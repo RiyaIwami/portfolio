@@ -65,4 +65,3 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->middleware('guest')
     ->name('password.update');
 
-Route::get('/edit-profile', [ProfileController::class, 'showProfileEditForm'])->name('edit-profile.form');

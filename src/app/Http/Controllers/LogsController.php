@@ -9,7 +9,7 @@ class LogsController extends Controller
 {
     public function showLogs() {
 
-        $logs = Log::get();
+        $logs = Log::all();
         return view('logs.logs', ['logs' => $logs]);
     }
 }
