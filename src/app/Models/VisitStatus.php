@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class VisitStatus extends Model
 {
-    protected $table = 'visit_statuses';
-    protected $primaryKey = 'id';
-    public $timestamps = true;
-    protected $fillable = ['visit_status'];
+    public function logs()
+    {
+        return $this->hasMany(Log::class, 'visit_status_id');
+    }
 }
 
 
