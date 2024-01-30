@@ -24,7 +24,6 @@
                 @endif
 
                 <div style="margin-bottom: 5px;"></div>
-                <div class="font-weight-bold text-center" style="font-size: 24px">ログ登録</div>
 
                 <form method="POST" action="{{ route('add') }}" class="p-5" enctype="multipart/form-data">
                     @csrf

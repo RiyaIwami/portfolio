@@ -10,6 +10,11 @@ class LogsController extends Controller
     public function showLogs() {
 
         $logs = Log::all();
-        return view('logs.logs', ['logs' => $logs]);
+        return view('logs.logs', compact('logs'));
+    }
+
+    public function showLogDetail($id){
+        $log = Log::find($id);
+        return view('logs.log_detail', compact('log'));
     }
 }

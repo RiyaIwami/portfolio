@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-end">
                             <small style="margin-right: 10px;">
-                                <a href="">詳細</a>
+                                <a href="{{ route('log', ['log_id' => $log->id]) }}">詳細</a>
                             </small>
                             <small style="margin-right: 10px;">
                                 <a href="">編集</a>
