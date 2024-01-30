@@ -6,19 +6,42 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-8">
-
                 <div style="margin-bottom: 20px;"></div>
 
-                <h4>{{$log->name}}</h4>
-                <div style="margin-bottom: 10px;"></div>
-                <p>{{$log->category->name}}</p>
-                {{-- 
-                カテゴリー
-                訪問状況
-                星
-                感想
-                画像 --}}
+                {{-- カードに余白を追加 --}}
+                <div class="card" style="padding: 15px;">
+                    <div class="position-relative overflow-hidden">
+                        <div class="d-flex align-items-center">
+                            <div class="card-body">
+                                <h3>{{$log->name}}</h3>
+                                <div style="margin-bottom: 20px;"></div>
+
+                                <p>カテゴリー: {{$log->category->name}}</p>
+                                <p>訪問状況: {{$log->visitStatus->name}}</p>
+
+                                <div id="rating">
+                                    @php
+                                        $starColor = ($log->score_id > 0) ? 'yellow' : 'gray';
+                                    @endphp
+
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <i class="fa fa-star" style="color: {{ $i <= $log->score_id ? $starColor : 'gray' }}; font-size: 25px;"></i>
+                                    @endfor
+                                </div>
+
+                                @if($log->review)
+                                    <p>感想: {{$log->review}}</p>
+                                @endif
+
+                                @if($log->image)
+                                    <img src="{{ $log->image }}" alt="Log Image" class="img-fluid">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
+
