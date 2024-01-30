@@ -29,6 +29,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 Route::group(['prefix' => 'logs', 'middleware' => ['auth']], function () {
     Route::get('/', [LogsController::class, 'showLogs'])->name('top');
     Route::get('/{log_id}', [LogsController::class, 'showLogDetail'])->name('log');
+    Route::get('/{log_id}/edit', [LogsController::class, 'showLogEditForm'])->name('edit');
 });
 
 Route::group(['prefix' => 'add', 'middleware' => ['auth']],

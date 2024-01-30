@@ -8,7 +8,6 @@
             <div class="col-8">
                 <div style="margin-bottom: 20px;"></div>
 
-                {{-- カードに余白を追加 --}}
                 <div class="card" style="padding: 15px;">
                     <div class="position-relative overflow-hidden">
                         <div class="d-flex align-items-center">
