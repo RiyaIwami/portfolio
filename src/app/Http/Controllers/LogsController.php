@@ -48,5 +48,32 @@ class LogsController extends Controller
 
         return redirect()->back()->with('status', 'ログを更新しました！');
     }
+
+    public function showSearchLogs(){
+        $categories = Category::orderBy('sort_no')->get();
+        $scores = Score::all();
+        $visitStatuses = VisitStatus::all();
+        return view('logs.search', compact('categories', 'visitStatuses', 'scores'));
+    }
+
+    public function search(Request $request)
+    {
+        $category = $request->input('category');
+        $visitStatus = $request->input('visit_status');
+        $score = $request->input('score');
+
+        $logs = Log::when($category, function ($query) use ($category) {
+            return $query->where('category', $category);
+        })
+        ->when($visitStatus, function ($query) use ($visitStatus) {
+            return $query->where('visit_status', $visitStatus);
+        })
+        ->when($score, function ($query) use ($score) {
+            return $query->where('score', $score);
+        })
+        ->get();
+
+        return view('logs.search_results', compact('logs'));
+    }
 }
 

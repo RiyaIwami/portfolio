@@ -40,6 +40,10 @@
                             <a class="dropdown-item" href="{{ route('top') }}" >
                                 <i class="fa-solid fa-house"></i>トップ
                             </a>
+                            <!-- 検索リンク -->
+                            <a class="dropdown-item" href="{{ route('search') }}" >
+                                <i class="fa-solid fa-magnifying-glass"></i>検索
+                            </a>
                             <!-- ログ登録リンク -->
                             <a class="dropdown-item" href="{{ route('add.form') }}" >
                                 <i class="fa-regular fa-pen-to-square"></i>ログ登録
