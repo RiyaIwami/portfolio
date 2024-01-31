@@ -32,14 +32,22 @@
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-end">
                             <small style="margin-right: 10px;">
-                                <a href="{{ route('log', ['log_id' => $log->id]) }}">詳細</a>
+                                <form action="{{ route('log', ['log_id' => $log->id]) }}" method="GET" name="detailForm">
+                                    <button type="submit">詳細</button>
+                                </form>
                             </small>
                             <small style="margin-right: 10px;">
-                                <a href="{{ route('edit', ['log_id' => $log->id]) }}">編集</a>
+                                <form action="{{ route('edit', ['log_id' => $log->id]) }}" method="GET" name="editForm">
+                                    <button type="submit">編集</button>
+                                </form>
                             </small>
-                            <small>
-                                <a href="{{ route('delete', ['log_id' => $log->id])}}">削除</a>
+                            <small style="margin-right: 10px;">
+                                <form action="{{ route('delete', ['log_id' => $log->id]) }}" method="POST" name="deleteForm">
+                                    @csrf
+                                    <button type="submit">削除</button>
+                                </form>
                             </small>
+                            
                         </div>
                     </div>
                 </div>

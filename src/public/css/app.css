@@ -90,6 +90,13 @@ input.star:checked ~ .rev-box {
   font-size: 20px;
 }
 
+.button-small {
+  padding: 5px 10px;
+  border: 0.5px solid #ccc;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

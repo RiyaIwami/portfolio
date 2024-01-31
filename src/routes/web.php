@@ -33,7 +33,7 @@ Route::group(['prefix' => 'logs', 'middleware' => ['auth']], function () {
     Route::get('/{log_id}', [LogsController::class, 'showLogDetail'])->name('log');
     Route::get('/{log_id}/edit', [LogsController::class, 'showLogEditForm'])->name('edit.form');
     Route::post('/{log_id}/edit', [LogsController::class, 'editLog'])->name('edit');
-    Route::post('/delete/{id}',[LogsController::class, 'deleteLog'])->name('delete');
+    Route::post('/delete/{log_id}',[LogsController::class, 'deleteLog'])->name('delete');
 });
 
 Route::group(['prefix' => 'add', 'middleware' => ['auth']],
