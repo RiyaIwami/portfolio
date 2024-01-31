@@ -113,17 +113,16 @@
                     <div class="form-group">
                         <label for="images">画像 (最大5枚)</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <div class="d-flex">
-                            <input id="images1" type="file" class="form-control @error('images') is-invalid @enderror"
-                                name="images[]" accept="image/*" multiple>
-                            <input id="images2" type="file" class="form-control @error('images') is-invalid @enderror"
-                                name="images[]" accept="image/*" multiple>
-                            <input id="images3" type="file" class="form-control @error('images') is-invalid @enderror"
-                                name="images[]" accept="image/*" multiple>
-                            <input id="images4" type="file" class="form-control @error('images') is-invalid @enderror"
-                                name="images[]" accept="image/*" multiple>
-                            <input id="images5" type="file" class="form-control @error('images') is-invalid @enderror"
-                                name="images[]" accept="image/*" multiple>
+                        <div class="d-flex flex-wrap">
+                            @if($log->images && count($log->images) > 0)
+                                @foreach($log->images as $image)
+                                    <img src="{{ asset('storage/' . $image) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 100px; max-height: 100px;">
+                                @endforeach
+                            @endif
+                            @for ($i = count($log->images ?? []); $i < 5; $i++)
+                                <input id="images{{ $i+1 }}" type="file" class="form-control @error('images') is-invalid @enderror"
+                                    name="images[]" accept="image/*" multiple>
+                            @endfor
                         </div>
                         @error('images')
                             <span class="invalid-feedback" role="alert">

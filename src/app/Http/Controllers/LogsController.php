@@ -10,24 +10,28 @@ use App\Models\Score;
 
 class LogsController extends Controller
 {
-    public function showLogs() {
+    public function showLogs()
+    {
         $logs = Log::all();
         return view('logs.logs', compact('logs'));
     }
 
-    public function showLogDetail($id){
+    public function showLogDetail($id)
+    {
         $log = Log::find($id);
         return view('logs.detail', compact('log'));
     }
 
-    public function showLogEditForm($id){
+    public function showLogEditForm($id)
+    {
         $log = Log::find($id);
         $categories = Category::all();
         $visitStatuses = VisitStatus::all();
         return view('logs.edit_form', compact('log', 'categories', 'visitStatuses'));
     }
 
-    public function editLog(Request $request, $id){
+    public function editLog(Request $request, $id)
+    {
         $log = Log::find($id);
 
         $user = auth()->user();
@@ -49,7 +53,14 @@ class LogsController extends Controller
         return redirect()->back()->with('status', 'ログを更新しました！');
     }
 
-    public function showSearchLogs(){
+    public function deleteLog($id)
+    {
+        $log = Log::destroy($id);
+        return redirect()->route('logs.logs');
+    }
+
+    public function showSearchLogs()
+    {
         $categories = Category::orderBy('sort_no')->get();
         $scores = Score::all();
         $visitStatuses = VisitStatus::all();
@@ -60,20 +71,19 @@ class LogsController extends Controller
     {
         $category = $request->input('category');
         $visitStatus = $request->input('visit_status');
-        $score = $request->input('score');
+        $score = $request->input('score_id');
 
         $logs = Log::when($category, function ($query) use ($category) {
-            return $query->where('category', $category);
+            return $query->where('category_id', $category);
         })
         ->when($visitStatus, function ($query) use ($visitStatus) {
-            return $query->where('visit_status', $visitStatus);
+            return $query->where('visit_status_id', $visitStatus);
         })
         ->when($score, function ($query) use ($score) {
-            return $query->where('score', $score);
+            return $query->where('score_id', $score);
         })
         ->get();
 
         return view('logs.search_results', compact('logs'));
     }
 }
-

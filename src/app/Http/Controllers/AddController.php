@@ -24,8 +24,10 @@ class AddController extends Controller
         $categories = Category::orderBy('sort_no')->get();
         $scores = Score::all();
         $visitStatuses = VisitStatus::all();
+        $log = new Log();
 
-        return view('add', compact('categories', 'visitStatuses', 'scores'));
+        return view('add', compact('categories', 'visitStatuses', 'scores', 'log'));
+
     }
 
     /**

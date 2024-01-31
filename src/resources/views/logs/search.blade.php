@@ -8,6 +8,7 @@
         <div class="col-8">
 
             <form action="{{ route('results') }}" method="post">
+                @csrf
 
                 <div class="form-group">
                     <label for="category">カテゴリ</label>

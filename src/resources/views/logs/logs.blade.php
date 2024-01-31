@@ -38,7 +38,7 @@
                                 <a href="{{ route('edit', ['log_id' => $log->id]) }}">編集</a>
                             </small>
                             <small>
-                                <a href="">削除</a>
+                                <a href="{{ route('delete', ['log_id' => $log->id])}}">削除</a>
                             </small>
                         </div>
                     </div>
