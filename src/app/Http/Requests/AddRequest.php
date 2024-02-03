@@ -28,7 +28,7 @@ class AddRequest extends FormRequest
             'category' => ['required', 'integer', 'exists:categories,id'],
             'visit_status' => ['required', 'string', 'exists:visit_statuses,id'],
             'score_id' => ['required', 'integer', 'exists:scores,id'],
-            'review' => ['nullable', 'string', 'max:255'],
+            'review' => ['nullable', 'string'],
             'image'  => ['nullable', 'file', 'image'],
         ];
     }

@@ -2,24 +2,24 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
 @charset "UTF-8";
 .navbar {
-  background-color: #ab8d71;
+  background-color: #aad2be;
 }
 
 .navbar-brand {
-  color: #EFE9D8 !important;
+  color: #F7F5F1 !important;
 }
 
 .nav-link {
-  color: #EFE9D8 !important;
+  color: #F7F5F1 !important;
 }
 
 .label {
-  color: #ab8d71 !important;
+  color: #aad2be !important;
 }
 
 .btn {
-  background-color: #ab8d71 !important;
-  color: #EFE9D8 !important;
+  background-color: #8FBDA6 !important;
+  color: #F7F5F1 !important;
 }
 
 * {
@@ -88,13 +88,6 @@ input.star:checked ~ .rev-box {
 
 .fa-star {
   font-size: 20px;
-}
-
-.button-small {
-  padding: 5px 10px;
-  border: 0.5px solid #ccc;
-  border-radius: 3px;
-  display: inline-block;
 }
 
 /*!
@@ -178,8 +171,8 @@ input.star:checked ~ .rev-box {
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg: #EFE9D8;
-  --bs-body-bg-rgb: 239, 233, 216;
+  --bs-body-bg: #F7F5F1;
+  --bs-body-bg-rgb: 247, 245, 241;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
   --bs-secondary-color: rgba(33, 37, 41, 0.75);
@@ -2569,10 +2562,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #EFE9D8, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #F7F5F1, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #EFE9D8, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  box-shadow: 0 0 0 1px #F7F5F1, 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;

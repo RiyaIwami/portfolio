@@ -1,7 +1,8 @@
 // Body
-$body-bg: #EFE9D8;
-$header-brown: #ab8d71;
-$text-beige: #EFE9D8;
+$body-bg: #F7F5F1;
+$header-brown: #8FBDA6;
+;
+$text-beige: #F7F5F1;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -9,24 +10,24 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 .navbar{
-    background-color: #ab8d71;
+    background-color: #aad2be;
 }
 
 .navbar-brand{
-    color: #EFE9D8 !important;
+    color: #F7F5F1 !important;
 }
 
 .nav-link{
-    color: #EFE9D8 !important;
+    color: #F7F5F1 !important;
 }
 
 .label{
-    color: #ab8d71 !important;
+    color: #aad2be !important;
 }
 
 .btn{
-    background-color: #ab8d71 !important;
-    color: #EFE9D8 !important;
+    background-color: #8FBDA6 !important;
+    color: #F7F5F1 !important;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
@@ -99,3 +100,4 @@ input.star:checked ~ .rev-box{
 .fa-star{
     font-size: 20px;
 }
+

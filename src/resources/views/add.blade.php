@@ -43,7 +43,7 @@
 
                     <div style="margin-bottom: 20px;"></div>
 
-                    {{-- カテゴリ　--}}
+                    {{-- カテゴリ --}}
                     <div class="form-group">
                         <label for="category">カテゴリ</label>
                         <div style="margin-bottom: 5px;"></div>
@@ -82,7 +82,6 @@
 
                     <div style="margin-bottom: 20px;"></div>
 
-
                     {{-- 点数 --}}
                     <div class="form-group">
                         <label for="score">点数</label>
@@ -97,14 +96,13 @@
                         </div>
                     </div>
 
-
                     <div style="margin-bottom: 20px;"></div>
 
                     {{-- 感想 --}}
                     <div class="form-group">
                         <label for="review">感想</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <input id="review" type="text" class="form-control">
+                        <textarea id="review" class="form-control" name="review">{{ old('review') }}</textarea>
                     </div>
 
                     <div style="margin-bottom: 20px;"></div>
@@ -116,26 +114,26 @@
                         <div class="d-flex flex-wrap">
                             @if($log->images && count($log->images) > 0)
                                 @foreach($log->images as $image)
-                                    <img src="{{ asset('storage/' . $image) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 100px; max-height: 100px;">
+                                    <img src="{{ asset('storage/' . $image->path) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 150px; max-height: 150px;">
                                 @endforeach
                             @endif
                             @for ($i = count($log->images ?? []); $i < 5; $i++)
-                                <input id="images{{ $i+1 }}" type="file" class="form-control @error('images') is-invalid @enderror"
+                                <input id="images{{ $i+1 }}" type="file" class="form-control @error('images.*') is-invalid @enderror"
                                     name="images[]" accept="image/*" multiple>
                             @endfor
                         </div>
-                        @error('images')
+                        @error('images.*')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-
-
+                    
                     <div style="margin-bottom: 20px;"></div>
 
                     <div class="form-group">
                         <div class="d-grid gap-2">
+                            {{-- 登録ボタン --}}
                             <button type="submit" class="btn btn-block">登録</button>
                         </div>
                     </div>
