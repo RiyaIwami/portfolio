@@ -16,7 +16,7 @@
                                 <div style="margin-bottom: 20px;"></div>
 
                                 <p>カテゴリー: {{$log->category->name}}</p>
-                                <div style="margin-bottom: 15px;"></div>
+                                
                                 <p>訪問状況: {{$log->visitStatus->name}}</p>
 
                                 <div id="rating">
@@ -29,8 +29,11 @@
                                     @endfor
                                 </div>
 
+                                <div style="margin-bottom: 20px;"></div>
+
                                 @if($log->review)
                                     <p>感想: {{$log->review}}</p>
+                                    <div style="margin-bottom: 20px;"></div>
                                 @endif
 
                                 @if($log->image)
