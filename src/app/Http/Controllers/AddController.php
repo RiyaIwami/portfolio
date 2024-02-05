@@ -25,13 +25,15 @@ class AddController extends Controller
         $scores = Score::all();
         $visitStatuses = VisitStatus::all();
 
+        $log = new Log(); 
+
         return view('add', compact('categories', 'visitStatuses', 'scores', 'log'));
     }
 
     public function addLog(AddRequest $request)
     {
         $user = Auth::user();
-
+        
         $log = Log::create([
             'user_id' => $user->id,
             'name' => $request->input('name'),
@@ -44,8 +46,9 @@ class AddController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('log_images', 'public');
-                $log->images()->create(['log_id' => $log->id, 'path' => $path]);
-            }
+                $imageModel = $log->images()->create(['path' => $path]);
+                $imageModel->log_id = $log->id; 
+                $imageModel->save(); 
         }
 
         $log->load('images');
@@ -57,6 +60,7 @@ class AddController extends Controller
             ]);
         }
 
+        }
         return redirect()->back()->with('status', 'ログを登録しました！');
     }
 }

@@ -6,11 +6,13 @@
 <div class="container">
     <div class="row justify-content-center">
         @foreach($logs as $log)
+        
             <div class="col-8">
                 <div class="card">
                     <div class="position-relative overflow-hidden">
                         <div class="d-flex align-items-center">
-                            <img src="{{ $log->image_path ? asset($log->image_path) : 'https://via.placeholder.com/150' }}" alt="Log Image">
+                            
+                            <img src="{{ !empty($log->images[0]->path) ? asset('storage/' . $log->images[0]->path) : '' }}" />
                             <div class="card-body">
                                 <h4 class="card-title">{{$log->name}}</h4>
                                 <small class="text-muted">

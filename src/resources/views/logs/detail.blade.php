@@ -16,6 +16,7 @@
                                 <div style="margin-bottom: 20px;"></div>
 
                                 <p>カテゴリー: {{$log->category->name}}</p>
+                                <div style="margin-bottom: 15px;"></div>
                                 <p>訪問状況: {{$log->visitStatus->name}}</p>
 
                                 <div id="rating">

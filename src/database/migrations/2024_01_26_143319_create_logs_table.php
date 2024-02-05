@@ -20,7 +20,7 @@ class CreateLogsTable extends Migration
             $table->unsignedBigInteger('category_id'); 
             $table->unsignedBigInteger('visit_status_id');
             $table->unsignedBigInteger('score_id');
-            $table->text('review')->nullable();
+            $table->string('review')->nullable();
             $table->unsignedBigInteger('image_id')->nullable();
             $table->timestamps();
     

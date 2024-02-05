@@ -12,7 +12,8 @@ class LogsController extends Controller
 {
     public function showLogs()
     {
-        $logs = Log::all();
+        $logs = Log::with('images')->get();
+        // dd($logs->toArray());
         return view('logs.logs', compact('logs'));
     }
 

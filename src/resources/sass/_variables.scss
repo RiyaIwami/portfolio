@@ -101,3 +101,14 @@ input.star:checked ~ .rev-box{
     font-size: 20px;
 }
 
+@media only screen and (max-width: 767px) {
+    .stars input {
+        width: 20px;
+        height: 20px;
+    }
+
+    .stars label {
+        font-size: 20px;
+    }
+}
+

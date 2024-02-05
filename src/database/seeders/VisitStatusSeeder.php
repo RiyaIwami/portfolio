@@ -19,7 +19,7 @@ class VisitStatusSeeder extends Seeder
         DB::table('visit_statuses')->insert([
             [
             'id'      => 1,
-            'name'    => '訪問済み',
+            'name'    => '訪問済',
             'sort_no' => 1,
             ],
             [

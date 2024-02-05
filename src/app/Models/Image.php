@@ -8,6 +8,8 @@ use App\Models\Log;
 
 class Image extends Model
 {
+    use HasFactory;
+
     protected $fillable = ['log_id', 'path'];
 
     public function log()
