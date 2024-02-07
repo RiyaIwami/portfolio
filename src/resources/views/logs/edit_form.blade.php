@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label for="review">感想</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <input id="review" type="text" class="form-control" value="{{ old('review', $log->review) }}">
+                        <textarea id="review" name="review" type="text" class="form-control" value="{{ old('review', $log->review) }}"></textarea>
                     </div>
 
                     <div style="margin-bottom: 20px;"></div>
