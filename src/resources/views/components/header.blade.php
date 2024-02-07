@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md header-brown shadow-sm">
+<nav class="navbar navbar-expand-md shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'mogurogu') }}
