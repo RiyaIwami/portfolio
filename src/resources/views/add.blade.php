@@ -13,16 +13,6 @@
                     </div>
                 @endif
 
-                @if ($errors->any())
-                    <div class="error">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <div style="margin-bottom: 5px;"></div>
 
                 <form method="POST" action="{{ route('add') }}" class="p-5" enctype="multipart/form-data">
