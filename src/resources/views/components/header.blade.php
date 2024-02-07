@@ -4,14 +4,19 @@
             {{ config('app.name', 'mogurogu') }}
         </a>
 
+        <!-- メニュートグルボタン -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- ナビゲーションの左側 -->
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <!-- 何も表示しない -->
             </ul>
 
             <!-- ナビゲーションの右側 -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <!-- 認証関連リンク -->
 
                 @guest
