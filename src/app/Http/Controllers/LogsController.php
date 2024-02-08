@@ -13,7 +13,6 @@ class LogsController extends Controller
     public function showLogs()
     {
         $logs = Log::with('images')->get();
-        // dd($logs->toArray());
         return view('logs.logs', compact('logs'));
     }
 
@@ -28,6 +27,7 @@ class LogsController extends Controller
         $log = Log::find($id);
         $categories = Category::all();
         $visitStatuses = VisitStatus::all();
+        // dd($log->toArray());
         return view('logs.edit_form', compact('log', 'categories', 'visitStatuses'));
     }
 

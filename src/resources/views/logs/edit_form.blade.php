@@ -102,9 +102,10 @@
                     {{-- 感想 --}}
                     <div class="form-group">
                         <label for="review">感想</label>
-                        <div style="margin-bottom: 5px;"></div>
-                        <textarea id="review" name="review" type="text" class="form-control" value="{{ old('review', $log->review) }}"></textarea>
+                            <div style="margin-bottom: 5px;"></div>
+                            <textarea id="review" name="review" class="form-control">{{ old('review', $log->review) }}</textarea>
                     </div>
+
 
                     <div style="margin-bottom: 20px;"></div>
 
