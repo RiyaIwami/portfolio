@@ -116,7 +116,7 @@
                         <div class="d-flex flex-wrap">
                             @if($log->images && count($log->images) > 0)
                                 @foreach($log->images as $image)
-                                    <img src="{{ asset('storage/' . $image) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 100px; max-height: 100px;">
+                                    <img src="{{ asset('storage/' . $image->path) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 150px; max-height: 150px;">
                                 @endforeach
                             @endif
                             @for ($i = count($log->images ?? []); $i < 5; $i++)

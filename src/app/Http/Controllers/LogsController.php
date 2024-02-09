@@ -13,12 +13,13 @@ class LogsController extends Controller
     public function showLogs()
     {
         $logs = Log::with('images')->get();
+        // dd($logs->toArray());
         return view('logs.logs', compact('logs'));
     }
 
     public function showLogDetail($id)
     {
-        $log = Log::find($id);
+        $log = Log::with('images')->find($id); 
         return view('logs.detail', compact('log'));
     }
 

@@ -36,9 +36,12 @@
                                     <div style="margin-bottom: 20px;"></div>
                                 @endif
 
-                                @if($log->image)
-                                    <img src="{{ $log->image }}" alt="Log Image" class="img-fluid">
+                                @if($log->images->isNotEmpty())
+                                    @foreach($log->images as $image)
+                                        <img src="{{ asset('storage/' . $image->path) }}" alt="Image" class="img-thumbnail m-2" style="max-width: 150px; max-height: 150px;">
+                                    @endforeach
                                 @endif
+
                             </div>
                         </div>
                     </div>
