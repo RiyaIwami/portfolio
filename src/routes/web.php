@@ -20,10 +20,10 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| Here is where you can register web routes for your application.
+| These routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|　
+| 
 */
 
 Route::group(['prefix' => 'logs', 'middleware' => ['auth']], function () {
@@ -55,9 +55,10 @@ Route::get('/email/verify', [VerificationController::class, 'show'])->name('veri
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 Route::get('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
-Route::get('/forgot-password', [ResetPasswordController::class, 'showForgotPasswordForm'])
-    ->middleware('guest')
-    ->name('password.request');
+// パスワードリセットフォームを表示するためのルート
+Route::get('/forgot-password', function () {
+    return view('auth.passwords.email');
+})->middleware('guest')->name('password.request');
 
 Route::post('/forgot-password', [ResetPasswordController::class, 'sendResetLinkEmail'])
     ->middleware('guest')
@@ -70,4 +71,3 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showRese
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])
     ->middleware('guest')
     ->name('password.update');
-
