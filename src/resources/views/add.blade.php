@@ -37,11 +37,10 @@
                     <div class="form-group">
                         <label for="category">カテゴリ</label>
                         <div style="margin-bottom: 5px;"></div>
-                        <select id="category" name="category"
-                            class="custom-select form-control @error('category') is-invalid @enderror">
+                        <select id="category" name="category" class="custom-select form-control @error('category') is-invalid @enderror">
+                            <option value="">選択してください</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ old('category') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
                                     {{ $category->name }}
                                 </option>
                             @endforeach
@@ -51,7 +50,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>
+                    </div>                    
 
                     <div style="margin-bottom: 20px;"></div>
 

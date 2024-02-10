@@ -22,12 +22,15 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     public function boot()
     {
         $this->registerPolicies();
 
         ResetPassword::createUrlUsing(function ($user, string $token) {
-            return 'https://example.com/reset-password?token='.$token;
+            // URLを生成する
+            $url = url('/password/reset/'.$token);
+            return $url;
         });
     }
 }

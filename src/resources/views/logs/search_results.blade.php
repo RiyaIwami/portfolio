@@ -11,7 +11,13 @@
                     <div class="card">
                         <div class="position-relative overflow-hidden">
                             <div class="d-flex align-items-center">
-                                <img src="{{ $log->image_path ? asset($log->image_path) : 'https://via.placeholder.com/150' }}" alt="Log Image">
+                                @if(!empty($log->images[0]->path))
+                                    <img src="{{ asset('storage/' . $log->images[0]->path) }}" style="width: 100px; margin: 5px; border-radius: 5px;">
+                                @else
+                                    <div style="width: 100px; height: 100px; margin: 5px; border-radius: 5px; background-color: #e9e7e4; display: flex; align-items: center; justify-content: center;">
+                                        <p style="margin: 0;">No Photo</p>
+                                    </div>
+                                @endif
                                 <div class="card-body">
                                     <h4 class="card-title">{{$log->name}}</h4>
                                     <small class="text-muted">
@@ -19,10 +25,7 @@
                                     </small>
                                     <div id="rating">
                                         @php
-                                            $starColor = 'gray';
-                                            if ($log->score_id > 0) {
-                                                $starColor = 'yellow';
-                                            }
+                                            $starColor = ($log->score_id > 0) ? 'yellow' : 'gray';
                                         @endphp
 
                                         @for ($i = 1; $i <= 5; $i++)
@@ -33,13 +36,20 @@
                             </div>
                             <div class="card-footer text-muted d-flex justify-content-end">
                                 <small style="margin-right: 10px;">
-                                    <a href="{{ route('log', ['log_id' => $log->id]) }}">詳細</a>
+                                    <form action="{{ route('log', ['log_id' => $log->id]) }}" method="GET" name="detailForm">
+                                        <button type="submit" style="border: none; color: #9b88b8;">詳細</button>
+                                    </form>
                                 </small>
                                 <small style="margin-right: 10px;">
-                                    <a href="{{ route('edit', ['log_id' => $log->id]) }}">編集</a>
+                                    <form action="{{ route('edit', ['log_id' => $log->id]) }}" method="GET" name="editForm">
+                                        <button type="submit" style="border: none; color: #9b88b8;">編集</button>
+                                    </form>
                                 </small>
-                                <small>
-                                    <a href="#">削除</a>
+                                <small style="margin-right: 10px;">
+                                    <form action="{{ route('delete', ['log_id' => $log->id]) }}" method="POST" name="deleteForm">
+                                        @csrf
+                                        <button type="submit" style="border: none; color: #9b88b8;">削除</button>
+                                    </form>
                                 </small>
                             </div>
                         </div>

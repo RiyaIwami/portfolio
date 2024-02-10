@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
 {
@@ -17,57 +17,41 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/home';
 
     /**
-     * Validate the email for the given request.
+     * Display the password reset view for the given token.
+     *
+     * If no token is present, display the link request form.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return void
+     * @param  string|null  $token
+     * @return \Illuminate\View\View
      */
-    protected function validateEmail(Request $request)
+    public function showResetForm(Request $request, $token = null)
     {
-        $request->validate(['email' => 'required|email']);
-    }
-
-    /**
-     * Send the password reset link.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
-    public function sendResetLinkEmail(Request $request)
-    {
-        $this->validateEmail($request);
-
-        $response = $this->broker()->sendResetLink(
-            $this->credentials($request)
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
         );
-
-        return $response == Password::RESET_LINK_SENT
-                    ? $this->sendResetLinkResponse($response)
-                    : $this->sendResetLinkFailedResponse($request, $response);
     }
 
     /**
-     * Get the needed authentication credentials from the request.
+     * Get the broker to be used during password reset.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    protected function credentials(Request $request)
+    public function broker()
     {
-        return $request->only('email');
+        return Password::broker();
     }
 
     /**
-     * Send the response after the password reset link has been sent.
+     * Get the guard to be used during password reset.
      *
-     * @param  string  $response
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function sendResetLinkResponse($response)
+    protected function guard()
     {
-        return back()->with('status', trans($response));
+        return Auth::guard();
     }
 }

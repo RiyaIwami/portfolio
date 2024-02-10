@@ -82,7 +82,6 @@
 
                     <div style="margin-bottom: 20px;"></div>
 
-
                     {{-- 点数 --}}
                     <div class="form-group">
                         <label for="score">点数</label>
