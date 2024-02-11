@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="card" style="width: 500px">
                 <div class="card-body">
-                    <div class="font-weight-bold text-center border-bottom pb-3" style="font-size: 24px">パスワード再設定</div>
+                    <div class="font-weight-bold text-center pb-3" style="font-size: 24px">パスワード再設定</div>
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
