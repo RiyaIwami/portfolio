@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -20,19 +22,67 @@ class ResetPasswordController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Display the password reset view for the given token.
+     * Create a new controller instance.
      *
-     * If no token is present, display the link request form.
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    /**
+     * Reset the given user's password.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string|null  $token
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function showResetForm(Request $request, $token = null)
+    public function reset(Request $request)
     {
-        return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
+        $request->validate($this->rules(), $this->validationErrorMessages());
+
+        // Here you can write the logic to reset the password
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => bcrypt($password),
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+
+                Auth::login($user);
+            }
         );
+
+        // Check the status and redirect accordingly
+        return $status === Password::PASSWORD_RESET
+                    ? $this->sendResetResponse($request, $status)
+                    : $this->sendResetFailedResponse($request, $status);
+    }
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ];
+    }
+
+    /**
+     * Get the password reset validation error messages.
+     *
+     * @return array
+     */
+    protected function validationErrorMessages()
+    {
+        return [];
     }
 
     /**
