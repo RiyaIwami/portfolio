@@ -47,7 +47,9 @@ Route::group(['prefix' => 'mypage', 'as' => 'mypage.', 'middleware' => ['auth']]
     Route::post('/edit-profile', [ProfileController::class, 'editProfile'])->name('edit-profile');
 });
 
-Auth::routes(['reset' => true]);
+Route::group(['middleware' => ['web']], function () {
+    Auth::routes();
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 

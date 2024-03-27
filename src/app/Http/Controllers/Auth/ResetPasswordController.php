@@ -39,7 +39,11 @@ class ResetPasswordController extends Controller
      */
     public function reset(Request $request)
     {
-        $request->validate($this->rules(), $this->validationErrorMessages());
+        $validator = \Validator::make($request->all(), $this->rules(), $this->validationErrorMessages());
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
         // Here you can write the logic to reset the password
         $status = Password::reset(
@@ -105,3 +109,4 @@ class ResetPasswordController extends Controller
         return Auth::guard();
     }
 }
+

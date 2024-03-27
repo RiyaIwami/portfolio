@@ -21,7 +21,10 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->save();
 
-        return redirect()->back()
-            ->with('status', 'プロフィールを変更しました。');
+        $request->session()->flash('status', 'プロフィールを変更しました。');
+
+        return view('mypage.profile_edit_form')
+            ->with('user', $user);
     }
 }
+

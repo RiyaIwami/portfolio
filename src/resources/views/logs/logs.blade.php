@@ -6,13 +6,13 @@
 <div class="container">
     <div class="row justify-content-center">
         @foreach($logs as $log)
-        
+	
             <div class="col-8">
                 <div class="card">
                     <div class="position-relative overflow-hidden">
                         <div class="d-flex align-items-center">
                             @if(!empty($log->images[0]->path))
-                                <img src="{{ asset('storage/' . $log->images[0]->path) }}" style="width: 100px; margin: 5px; border-radius: 5px;">
+                                <img src="{{ asset('storage/' . $log->images[0]->path) }}" alt="Log image" style="width: 100px; margin: 5px; border-radius: 5px;">
                             @else
                                 <div style="width: 100px; height: 100px; margin: 5px; border-radius: 5px; background-color: #e9e7e4; display: flex; align-items: center; justify-content: center;">
                                     <p style="margin: 0;">No Photo</p>
@@ -64,3 +64,4 @@
     </div>
 </div>
 @endsection
+

@@ -52,7 +52,12 @@ class LogsController extends Controller
 
         $log->save();
 
-        return redirect()->back()->with('status', 'ログを更新しました！');
+        $request->session()->flash('status', 'ログを更新しました！');
+
+	$categories = Category::all();
+        $visitStatuses = VisitStatus::all();
+
+        return view('logs.edit_form', compact('log', 'categories', 'visitStatuses'));
     }
 
     public function deleteLog($id)

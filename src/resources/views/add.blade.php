@@ -38,7 +38,7 @@
                     <label for="category">カテゴリ</label>
                     <div style="margin-bottom: 5px;"></div>
                     <select id="category" name="category"
-                        class="custom-select form-control @error('category') is-invalid @enderror">
+                        class="custom-select form-control @error('category') is-invalid @enderror" required>
                         <option value="">選択してください</option>
                         @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ old('category') == $category->id ? 'selected' : '' }}>
@@ -168,3 +168,4 @@
 </script>
 
 @endsection
+
