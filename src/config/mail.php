@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'ses'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,10 @@ return [
         ],
 
         'ses' => [
-            'transport' => 'ses',
+		'transport' => 'ses',
+		'key' => env('MAIL_USERNAME'),
+    		'secret' => env('MAIL_PASSWORD'),
+    		'region' => env('AWS_DEFAULT_REGION', 'ap-northeast-1.'),
         ],
 
         'mailgun' => [
@@ -92,9 +95,10 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@mogurogu.com'),
+        'name' => env('MAIL_FROM_NAME', 'mogurogu'),
     ],
+
 
     /*
     |--------------------------------------------------------------------------
