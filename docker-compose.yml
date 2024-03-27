@@ -30,10 +30,10 @@ services:
       dockerfile: ./docker/nginx/Dockerfile
     container_name: app_nginx
     ports:
-      - 8081:80
+      - 80:80
     volumes:
       - ./src:/var/www/app
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/default.conf:/etc/nginx/nginx.conf
     depends_on:
       - backend
 
