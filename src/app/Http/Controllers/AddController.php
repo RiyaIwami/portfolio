@@ -58,13 +58,6 @@ class AddController extends Controller
 
         $log->load('images');
 
-        foreach ($log->images as $image) {
-            Image::create([
-                'log_id' => $log->id,
-                'path' => $image->path,
-            ]);
-        }
-
         $request->session()->flash('status', 'ログを登録しました！');
 
         $logs = Log::orderBy('updated_at', 'desc')->get();

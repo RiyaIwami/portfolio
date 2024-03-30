@@ -12,14 +12,13 @@ class LogsController extends Controller
 {
     public function showLogs()
     {
-        $logs = Log::with('images')->get();
-        // dd($logs->toArray());
+        $logs = Log::with('images')->orderBy('created_at', 'desc')->get();
         return view('logs.logs', compact('logs'));
     }
 
     public function showLogDetail($id)
     {
-        $log = Log::with('images')->find($id); 
+        $log = Log::with('images')->find($id);
         return view('logs.detail', compact('log'));
     }
 
@@ -28,7 +27,7 @@ class LogsController extends Controller
         $log = Log::find($id);
         $categories = Category::all();
         $visitStatuses = VisitStatus::all();
-        // dd($log->toArray());
+        // dd($logs->toArray());
         return view('logs.edit_form', compact('log', 'categories', 'visitStatuses'));
     }
 
