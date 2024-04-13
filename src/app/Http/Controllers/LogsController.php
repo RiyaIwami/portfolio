@@ -62,7 +62,7 @@ class LogsController extends Controller
     public function deleteLog($id)
     {
         $log = Log::destroy($id);
-        return redirect()->route('top');
+        return redirect()->route('logs');
     }
 
     public function showSearchLogs()

@@ -42,9 +42,11 @@
                         <!-- ドロップダウンメニュー -->
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <!-- トップリンク -->
-                            <a class="dropdown-item" href="{{ route('top') }}" >
-                                <i class="fa-solid fa-house"></i>トップ
+                            <a class="dropdown-item" href="{{ route('logs') }}">
+                                <i class="fa-solid fa-list"></i>
+                                ログ一覧
                             </a>
+                        
                             <!-- 検索リンク -->
                             <a class="dropdown-item" href="{{ route('search') }}" >
                                 <i class="fa-solid fa-magnifying-glass"></i>検索
