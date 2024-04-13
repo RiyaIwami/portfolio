@@ -26,6 +26,10 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 | 
 */
 
+Route::get('/', function () {
+    return view('top');
+});
+
 Route::group(['prefix' => 'logs', 'middleware' => ['auth']], function () {
     Route::get('/', [LogsController::class, 'showLogs'])->name('logs');
     Route::get('/search', [LogsController::class, 'showSearchLogs'])->name('search');

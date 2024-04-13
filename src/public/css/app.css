@@ -3,6 +3,8 @@
 @charset "UTF-8";
 .navbar {
   background-color: #aad2be;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar-brand {
