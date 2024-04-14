@@ -1,8 +1,12 @@
 FROM nginx:latest
 
 RUN apt update && apt install -y procps
-RUN groupadd --force -g 1000 nginx && \
-    useradd --force -u 1000 -g nginx -s /bin/bash nginx
+
+# Check if the group 'nginx' exists before adding it
+RUN getent group nginx || groupadd -g 1000 nginx
+
+# Check if the user 'nginx' exists before adding it
+RUN getent passwd nginx || useradd -u 1000 -g nginx -s /bin/bash nginx
 
 COPY nginx.conf /etc/nginx/
 
@@ -15,6 +19,7 @@ RUN groupadd -g 82 www-data && \
 EXPOSE 80 443
 
 USER nginx
+
 
 
 
