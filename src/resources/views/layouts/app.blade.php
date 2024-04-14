@@ -28,7 +28,7 @@
 <body>
     <div id="app">
         <x-header></x-header>
-        <main>
+        <main class="py-4">
             @yield('content')
         </main>
     </div>
