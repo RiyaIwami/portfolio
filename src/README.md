@@ -5,6 +5,7 @@ URL:http://mogurogu.com/login
 mogurugu（もぐろぐ）はお気に入りの飲食店をわかりやすくメモできるサイトです。
 ログ登録をすることでいつか行きたいと思ったお店や人に教えたいお店をすぐに見つけることができます。
 
+https://github.com/RiyaIwami/portfolio/assets/150124532/ac01bfcd-7d39-4593-b621-5f97bee09145
 
 ■使用技術
 【フロントエンド】
