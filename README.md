@@ -1,9 +1,9 @@
-# 飲食店メモアプリ　「mogurugu」<br>
+# 飲食店メモアプリ　「mogurogu」<br>
 ![トップ](https://github.com/RiyaIwami/portfolio/assets/150124532/22efd9b6-7a09-4139-ad57-820873abe7f7)<br>
 
 ### ■サイト概要<br>
 URL:https://mogurogu.com<br>
-mogurugu（もぐろぐ）はお気に入りの飲食店をわかりやすくメモできるサイトです。<br>
+mogurogu（もぐろぐ）はお気に入りの飲食店をわかりやすくメモできるサイトです。<br>
 記録したお店は一覧で見ることができます。<br>
 また、検索機能で行きたいお店や人に教えたいお店をすぐに見つけることができます。<br>
  ![ログ一覧](https://github.com/RiyaIwami/portfolio/assets/150124532/b34735f5-cebb-4043-a126-500666a9b8de)<br>
