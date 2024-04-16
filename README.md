@@ -6,6 +6,9 @@ URL:https://mogurogu.com<br>
 mogurugu（もぐろぐ）はお気に入りの飲食店をわかりやすくメモできるサイトです。<br>
 記録したお店は一覧で見ることができます。<br>
 また、検索機能で行きたいお店や人に教えたいお店をすぐに見つけることができます。<br>
+![S__225189890](https://github.com/RiyaIwami/portfolio/assets/150124532/68001f34-4e3f-4f4e-9f78-4fc72a5b0a6a)<br>
+
+
 
 ### ■使用技術<br>
 ##### 【フロントエンド】<br>
