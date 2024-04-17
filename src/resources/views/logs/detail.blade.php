@@ -32,7 +32,7 @@
                                 <div style="margin-bottom: 20px;"></div>
 
                                 @if($log->review)
-                                    <p>感想: {{$log->review}}</p>
+                                    <p>メモ: {{$log->review}}</p>
                                     <div style="margin-bottom: 20px;"></div>
                                 @endif
 

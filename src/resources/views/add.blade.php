@@ -99,7 +99,7 @@
 
                 {{-- 感想 --}}
                 <div class="form-group">
-                    <label for="review">感想</label>
+                    <label for="review">メモ</label>
                     <div style="margin-bottom: 5px;"></div>
                     <textarea id="review" class="form-control" name="review">{{ old('review') }}</textarea>
                     @error('review')

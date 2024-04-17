@@ -111,7 +111,7 @@
 
                 {{-- 感想 --}}
                 <div class="form-group">
-                    <label for="review">感想</label>
+                    <label for="review">メモ</label>
                     <div style="margin-bottom: 5px;"></div>
                     <textarea id="review" name="review"
                         class="form-control">{{ old('review', $log->review) }}</textarea>
