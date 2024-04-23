@@ -7,14 +7,17 @@ use App\Models\Log;
 use App\Models\Category;
 use App\Models\VisitStatus;
 use App\Models\Score;
+use Illuminate\Support\Facades\Auth;
 
 class LogsController extends Controller
 {
     public function showLogs()
-    {
-        $logs = Log::with('images')->orderBy('created_at', 'desc')->get();
-        return view('logs.logs', compact('logs'));
-    }
+{
+    $user = Auth::user();
+    $logs = Log::where('user_id', $user->id)->with('images')->orderBy('created_at', 'desc')->get();
+
+    return view('logs.logs', compact('logs'));
+}
 
     public function showLogDetail($id)
     {
